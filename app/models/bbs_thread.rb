@@ -1,0 +1,2 @@
+class BbsThread < ApplicationRecord
+end
