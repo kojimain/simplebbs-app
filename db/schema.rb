@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_20_065820) do
+ActiveRecord::Schema.define(version: 2018_10_20_164602) do
+
+  create_table "bbs_posts", force: :cascade do |t|
+    t.integer "bbs_thread_id"
+    t.text "body"
+    t.string "poster_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bbs_thread_id"], name: "index_bbs_posts_on_bbs_thread_id"
+  end
 
   create_table "bbs_threads", force: :cascade do |t|
     t.string "title"
