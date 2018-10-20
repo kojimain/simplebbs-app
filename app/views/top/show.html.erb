@@ -1,2 +1,8 @@
-<h1>Top#show</h1>
-<p>Find me in app/views/top/show.html.erb</p>
+<h1>TOP</h1>
+
+<h2>スレッド一覧</h2>
+<table>
+  <tbody>
+    <%= render @view.bbs_thread_views %>
+  </tbody>
+</table>
