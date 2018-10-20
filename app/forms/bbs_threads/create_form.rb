@@ -1,5 +1,8 @@
 class BbsThreads::CreateForm < ApplicationForm
-  attribute :title, :string, default: "(no title)"
+  attribute :title, :string, default: ""
+  
+  validates :title,
+    presence: true
   
   def url
     api_bbs_threads_path
