@@ -1,6 +1,11 @@
 class ApplicationForm
   include ActiveModel::Model
   include ActiveModel::Attributes
+  include Rails.application.routes.url_helpers
+  
+  def url
+    raise NotImplementedError
+  end
   
   def save
     @saved = save_logic if valid?
@@ -12,13 +17,13 @@ class ApplicationForm
   
   def result
     {
-      status: (saved? ? 200 : 400),
+      status: http_status,
       messages: self.errors.full_messages,
     }
   end
   
   def http_status
-    result[:status]
+    saved? ? 200 : 400
   end
   
   private

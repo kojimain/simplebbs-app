@@ -1,5 +1,9 @@
 class Top::ShowView < ApplicationView
   
+  def bbs_threads_create_view
+    Top::BbsThreads::CreateView.new()
+  end
+  
   def bbs_thread_views
     bbs_threads.
     map{|bbs_thread|

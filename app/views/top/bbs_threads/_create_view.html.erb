@@ -1,0 +1,59 @@
+<div>
+  <form id="top_bbs_threads_create_form" method="post" action="<%= api_bbs_threads_path %>">
+    <table>
+       <tbody>
+         <tr>
+           <th>
+             タイトル
+           </th>
+           <td>
+             <input
+              type="text"
+              name="bbs_threads_create_form[title]"
+              value="<%= create_view.form.title %>"
+              >
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <button type="submit">作成</button>
+           </td>
+         </tr>
+       </tbody>
+    </table>
+  </form>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    
+    $('#top_bbs_threads_create_form')
+    .submit(function(event){
+      event.preventDefault();
+      
+      var $form = $(this);
+      
+      function sendPost(){
+        return $.ajax({
+          beforeSend: function(request) {
+            request.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'));
+          },
+          url: $form.attr('action'),
+          type: $form.attr('method'),
+          data: $form.serialize(),
+        });
+      };
+      
+      sendPost()
+      .done(function(){
+        location.reload();
+      })
+      .fail(function(xhr){
+        var response = $.parseJSON(xhr.responseText);
+        alert(response['messages']);
+      });
+      
+    });
+    
+  });
+</script>

@@ -1,6 +1,10 @@
 class BbsThreads::CreateForm < ApplicationForm
   attribute :title, :string, default: "(no title)"
   
+  def url
+    api_bbs_threads_path
+  end
+  
   private
   
   def save_logic
