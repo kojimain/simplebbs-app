@@ -1,0 +1,8 @@
+Description:
+    Explain the generator
+
+Example:
+    rails generate view_model Thing
+
+    This will create:
+        view_models/Thing_view.rb

@@ -1,0 +1,8 @@
+<% if namespaced? -%>
+require_dependency "<%= namespaced_path %>/application_view"
+
+<% end -%>
+<% module_namespacing do -%>
+class <%= class_name %>View < ApplicationView
+end
+<% end -%>
