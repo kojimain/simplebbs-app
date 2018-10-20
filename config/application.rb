@@ -15,5 +15,15 @@ module SimplebbsApp
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    config.generators do |generators_config|
+      generators_config.assets false
+      generators_config.helper false
+      generators_config.skip_routes true
+      generators_config.test_framework :rspec, {
+        view_specs: false,
+      }
+    end
+
   end
 end
