@@ -1,0 +1,73 @@
+<div>
+  <form
+    id="top_bbs_posts_create_form"
+    method="post"
+    action="<%= create_view.form.url %>"
+  >
+    <table>
+      <tbody>
+        <tr>
+          <th>
+            本文
+          </th>
+          <td>
+            <textarea
+              name="bbs_posts_create_form[body]"
+              ><%= create_view.form.body %></textarea>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            投稿者名
+          </th>
+          <td>
+            <input
+             type="text"
+             name="bbs_posts_create_form[poster_name]"
+             value="<%= create_view.form.poster_name %>"
+             >
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button type="submit">作成</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    
+    $('#top_bbs_posts_create_form')
+    .submit(function(event){
+      event.preventDefault();
+      
+      var $form = $(this);
+      
+      function sendPost(){
+        return $.ajax({
+          beforeSend: function(request) {
+            request.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'));
+          },
+          url: $form.attr('action'),
+          type: $form.attr('method'),
+          data: $form.serialize(),
+        });
+      };
+      
+      sendPost()
+      .done(function(){
+        location.reload();
+      })
+      .fail(function(xhr){
+        var response = $.parseJSON(xhr.responseText);
+        alert(response['messages']);
+      });
+      
+    });
+    
+  });
+</script>

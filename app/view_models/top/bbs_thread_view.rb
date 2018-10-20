@@ -10,5 +10,9 @@ class Top::BbsThreadView < ApplicationView
   def title
     bbs_thread.title
   end
+  
+  def title_link
+    bbs_thread_path(bbs_thread)
+  end
 
 end

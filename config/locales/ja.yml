@@ -1,6 +1,9 @@
 ja:
   activemodel:
     attributes:
+      bbs_posts/create_form:
+        body: "本文"
+        poster_name: "投稿者名"
       bbs_threads/create_form:
         title: "タイトル"
   date:

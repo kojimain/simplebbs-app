@@ -1,5 +1,10 @@
 <tr>
   <td>
-    <%= bbs_thread_view.title %>
+    <%=
+      link_to(
+        bbs_thread_view.title,
+        bbs_thread_view.title_link
+      )
+    %>
   </td>
 </tr>

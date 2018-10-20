@@ -1,4 +1,6 @@
 class ApplicationView  
+  include Rails.application.routes.url_helpers
+  
   def initialize(**opts)
     post_initialize(opts)
   end

@@ -1,0 +1,13 @@
+<h1><%= @view.h1 %></h1>
+
+<h2>投稿作成</h2>
+<%= render @view.bbs_posts_create_view %>
+
+<hr>
+
+<h2>投稿一覧</h2>
+<table>
+  <tbody>
+    <%= render @view.bbs_post_views %>
+  </tbody>
+</table>
