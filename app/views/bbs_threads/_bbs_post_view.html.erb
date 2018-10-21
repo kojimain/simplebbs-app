@@ -5,6 +5,48 @@
     </p>
     <div>
       投稿者：<%= bbs_post_view.poster_name %>
+      <span>
+        <button
+          type="button"
+          id="<%= bbs_post_view.delete_bbs_post_button_id %>"
+          data-url="<%= bbs_post_view.delete_bbs_post_path %>"
+        >
+          削除
+        </button>
+      </span>
     </div>
   </td>
 </tr>
+
+<script type="text/javascript">
+  $(function(){
+    $('#<%= bbs_post_view.delete_bbs_post_button_id %>')
+    .click(function(){
+      
+      if (confirm('削除します\nよろしいですか？')){
+      
+        var $button = $(this);
+        
+        function sendDelete(){
+          return $.ajax({
+            beforeSend: function(request) {
+              request.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'));
+            },
+            url: $button.attr('data-url'),
+            type: 'delete',
+          });
+        };
+        
+        sendDelete()
+        .done(function(){
+          location.reload();
+        })
+        .fail(function(xhr){
+          alert('通信エラーです');
+        });
+      
+      } // if confirm
+      
+    });
+  });
+</script>

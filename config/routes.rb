@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :bbs_threads, only: [:create] do
       resources :bbs_posts, only: [:create]
     end
+    resources :bbs_posts, only: [:destroy]
   end
   
 end

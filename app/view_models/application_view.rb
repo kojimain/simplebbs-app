@@ -1,5 +1,6 @@
 class ApplicationView  
   include Rails.application.routes.url_helpers
+  include ActionView::Helpers::TagHelper
   
   def initialize(**opts)
     post_initialize(opts)

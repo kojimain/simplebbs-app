@@ -11,6 +11,19 @@ class Api::BbsPostsController < ApplicationController
     )
   end
   
+  def destroy
+    bbs_post = BbsPost.find(params[:id])
+    bbs_post.destroy!
+    return render(
+      status: 200,
+      json: {
+        messages: [
+          "success",
+        ]
+      }
+    )
+  end
+  
   private
   
   def form_params
