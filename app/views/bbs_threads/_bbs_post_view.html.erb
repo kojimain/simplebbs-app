@@ -1,7 +1,7 @@
 <tr>
   <td>
     <p>
-      <%= bbs_post_view.body %>
+      <%= simple_format(bbs_post_view.body) %>
     </p>
     <div>
       投稿者：<%= bbs_post_view.poster_name %>
