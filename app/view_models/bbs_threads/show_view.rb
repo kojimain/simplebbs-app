@@ -29,7 +29,7 @@ class BbsThreads::ShowView < ApplicationView
   
   def bbs_posts
     @bbs_posts ||=
-    BbsPost.all.
+    bbs_thread.bbs_posts.
     order(created_at: :desc)
   end
   
