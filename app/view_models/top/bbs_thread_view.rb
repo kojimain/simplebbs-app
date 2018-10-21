@@ -15,4 +15,12 @@ class Top::BbsThreadView < ApplicationView
     bbs_thread_path(bbs_thread)
   end
 
+  def delete_bbs_thread_button_id
+    "delete_bbs_thread_#{bbs_thread.id}_button"
+  end
+
+  def delete_bbs_thread_path
+    api_bbs_thread_path(bbs_thread)
+  end
+
 end

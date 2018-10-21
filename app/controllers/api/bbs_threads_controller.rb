@@ -8,6 +8,19 @@ class Api::BbsThreadsController < ApplicationController
     )
   end
   
+  def destroy
+    bbs_thread = BbsThread.find(params[:id])
+    bbs_thread.destroy!
+    return render(
+      status: 200,
+      json: {
+        messages: [
+          "success",
+        ]
+      }
+    )
+  end
+  
   private
   
   def form_params
