@@ -1,4 +1,8 @@
-<h1><%= @view.h1 %></h1>
+<h1>
+  <%= link_to "SimpleBBS", root_path %>
+  »
+  <%= @view.bbs_thread_title %>
+</h1>
 
 <h2>投稿作成</h2>
 <%= render @view.bbs_posts_create_view %>

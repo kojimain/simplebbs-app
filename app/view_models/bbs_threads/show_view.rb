@@ -6,7 +6,7 @@ class BbsThreads::ShowView < ApplicationView
     @bbs_thread = bbs_thread
   end
   
-  def h1
+  def bbs_thread_title
     bbs_thread.title
   end
   
