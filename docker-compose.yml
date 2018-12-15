@@ -13,6 +13,8 @@ services:
       - "POSTGRES_PASSWORD=p4ssw0rd"
       - "POSTGRES_DB=development"
       # --- // simplebbs_db ----------
+    volumes:
+      - .:/simplebbs-app
     ports:
       - "80:80"
     depends_on:
