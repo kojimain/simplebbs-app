@@ -1,0 +1,39 @@
+version: "3.6"
+
+services:
+  simplebbs_app:
+    build: .
+    environment:
+      # --- simplebbs_app // ----------
+      - "PORT=80"
+      - "DB_HOST=simplebbs_db"
+      # --- // simplebbs_app ----------
+      # --- simplebbs_db // ----------
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=p4ssw0rd"
+      - "POSTGRES_DB=development"
+      # --- // simplebbs_db ----------
+    ports:
+      - "80:80"
+    depends_on:
+      - simplebbs_db
+    command: |
+      /bin/bash -c '
+      rm -rf tmp/pids/server.pid;
+      bundle exec rails s -b 0.0.0.0;
+      '
+  simplebbs_db:
+    image: postgres:10
+    environment:
+      # --- simplebbs_db // ----------
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=p4ssw0rd"
+      - "POSTGRES_DB=development"
+      # --- // simplebbs_db ----------
+    volumes:
+      - vol_db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  vol_db:
