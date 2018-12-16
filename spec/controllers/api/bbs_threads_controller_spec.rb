@@ -14,7 +14,7 @@ RSpec.describe Api::BbsThreadsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
     
-    it "adds a bbs_post" do
+    it "adds a bbs_thread" do
       expect {
         post :create, params: {bbs_threads_create_form: bbs_thread_create_form_params}
       }.to change(BbsThread.all, :count).by(1)
