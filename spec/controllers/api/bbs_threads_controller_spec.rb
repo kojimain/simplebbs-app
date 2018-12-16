@@ -20,5 +20,22 @@ RSpec.describe Api::BbsThreadsController, type: :controller do
       }.to change(BbsThread.all, :count).by(1)
     end
   end
+  
+  describe "DELETE #destroy" do
+    before do
+      @bbs_thread = FactoryBot.create(:bbs_thread)
+    end
+    
+    it "returns http success" do
+      delete :destroy, params: {id: @bbs_thread.id}
+      expect(response).to have_http_status(:success)
+    end
+    
+    it "removes a bbs_thread" do
+      expect{
+        delete :destroy, params: {id: @bbs_thread.id}
+      }.to change(BbsThread, :count).by(-1)
+    end
+  end
 
 end
