@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SimplebbsApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <!-- styles -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <!-- scripts -->
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -14,6 +19,28 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="hero is-info">
+      <div class="hero-body">
+        <p class="title">
+          <%= link_to "SimpleBBS", root_path %>
+        </p>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>(C)2018 kojimain</p>
+        <a
+          href="https://github.com/kojimain/simplebbs-app"
+          class="button">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </footer>
   </body>
 </html>

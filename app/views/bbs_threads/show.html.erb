@@ -1,17 +1,13 @@
-<h1>
-  <%= link_to "SimpleBBS", root_path %>
-  »
-  <%= @view.bbs_thread_title %>
-</h1>
-
-<h2>投稿作成</h2>
-<%= render @view.bbs_posts_create_view %>
-
-<hr>
-
-<h2>投稿一覧</h2>
-<table>
-  <tbody>
+<section class="section">
+  <h1 class="title"><%= @view.bbs_thread_title %></h1>
+</section>
+<section class="section">
+  <h2 class="title">投稿作成</h2>
+  <%= render @view.bbs_posts_create_view %>
+</section>
+<section class="section">
+  <h2 class="title">投稿一覧</h2>
+  <div class="container">
     <%= render @view.bbs_post_views %>
-  </tbody>
-</table>
+  </div>
+</section>

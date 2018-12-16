@@ -1,27 +1,30 @@
-<div>
-  <form id="top_bbs_threads_create_form" method="post" action="<%= api_bbs_threads_path %>">
-    <table>
-       <tbody>
-         <tr>
-           <th>
-             タイトル
-           </th>
-           <td>
-             <input
-              type="text"
-              name="bbs_threads_create_form[title]"
-              value="<%= create_view.form.title %>"
-              >
-           </td>
-         </tr>
-         <tr>
-           <td>
-             <button type="submit">作成</button>
-           </td>
-         </tr>
-       </tbody>
-    </table>
-  </form>
+<div class="columns is-mobile">
+  <div class="column is-8">
+    <div class="box">
+      <form
+        id="top_bbs_threads_create_form"
+        method="post"
+        action="<%= api_bbs_threads_path %>">
+        <div class="field">
+          <label class="label">タイトル</label>
+          <div class="control">
+            <input
+             type="text"
+             name="bbs_threads_create_form[title]"
+             value="<%= create_view.form.title %>"
+             class="input">
+          </div>
+        </div>
+        <div class="field">
+          <button
+            type="submit"
+            class="button is-info is-fullwidth">
+            作成
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
 
 <script type="text/javascript">

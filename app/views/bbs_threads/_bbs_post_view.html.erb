@@ -1,22 +1,18 @@
-<tr>
-  <td>
-    <p>
-      <%= simple_format(bbs_post_view.body) %>
-    </p>
-    <div>
+<div class="columns is-vcentered is-mobile">
+  <div class="column box is-8">
+    <%= simple_format(bbs_post_view.body) %>
+    <p class="is-pulled-right">
       投稿者：<%= bbs_post_view.poster_name %>
-      <span>
-        <button
-          type="button"
-          id="<%= bbs_post_view.delete_bbs_post_button_id %>"
-          data-url="<%= bbs_post_view.delete_bbs_post_path %>"
-        >
-          削除
-        </button>
-      </span>
-    </div>
-  </td>
-</tr>
+    </p>
+  </div>
+  <div class="column is-2">
+    <button
+      type="button"
+      id="<%= bbs_post_view.delete_bbs_post_button_id %>"
+      data-url="<%= bbs_post_view.delete_bbs_post_path %>"
+      class="delete"/>
+  </div>
+</div>
 
 <script type="text/javascript">
   $(function(){
