@@ -40,17 +40,23 @@ RSpec.describe Api::BbsThreadsController, type: :controller do
   
   describe "GET #index" do
     before do
-      @bbs_thread = FactoryBot.create(:bbs_thread)
+      11.times{|n| FactoryBot.create(:bbs_thread) }
+      @bbs_threads = BbsThread.all
     end
     it "returns http success" do
       get :index
       expect(response).to have_http_status(:success)
     end
-    it "returns json of bbs_threads list" do
+    it "returns json of bbs_threads list paginated per 10" do
       get :index
-      expect(JSON(response.body)).to eq([
-        JSON(@bbs_thread.to_json).slice('id', 'title', 'created_at'),
-      ])
+      expect(response.body).to eq(
+        @bbs_threads.
+        limit(10).
+        map{|bbs_thread|
+          bbs_thread.slice('id', 'title', 'created_at')
+        }.
+        to_json
+      )
     end
   end
 

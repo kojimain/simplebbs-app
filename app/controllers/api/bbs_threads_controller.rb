@@ -22,7 +22,11 @@ class Api::BbsThreadsController < ApplicationController
   end
   
   def index
-    bbs_threads = BbsThread.select(*index_select_columns).all
+    bbs_threads =
+    BbsThread.select(*index_select_columns).all.
+    page(params[:page]).
+    per(10)
+    
     return render(
       status: 200,
       json: bbs_threads.to_json
