@@ -21,6 +21,14 @@ class Api::BbsThreadsController < ApplicationController
     )
   end
   
+  def index
+    bbs_threads = BbsThread.select(*index_select_columns).all
+    return render(
+      status: 200,
+      json: bbs_threads.to_json
+    )
+  end
+  
   private
   
   def form_params
@@ -28,5 +36,13 @@ class Api::BbsThreadsController < ApplicationController
     permit(
       :title,
     )
+  end
+  
+  def index_select_columns
+    [
+      :id,
+      :title,
+      :created_at,
+    ]
   end
 end

@@ -37,5 +37,21 @@ RSpec.describe Api::BbsThreadsController, type: :controller do
       }.to change(BbsThread, :count).by(-1)
     end
   end
+  
+  describe "GET #index" do
+    before do
+      @bbs_thread = FactoryBot.create(:bbs_thread)
+    end
+    it "returns http success" do
+      get :index
+      expect(response).to have_http_status(:success)
+    end
+    it "returns json of bbs_threads list" do
+      get :index
+      expect(JSON(response.body)).to eq([
+        JSON(@bbs_thread.to_json).slice('id', 'title', 'created_at'),
+      ])
+    end
+  end
 
 end
