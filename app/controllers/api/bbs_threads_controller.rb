@@ -29,7 +29,16 @@ class Api::BbsThreadsController < ApplicationController
     
     return render(
       status: 200,
-      json: bbs_threads.to_json
+      json: bbs_threads.map{|bbs_thread|
+        {
+          id: bbs_thread.id,
+          title: bbs_thread.title,
+          created_at: bbs_thread.created_at,
+          url:
+            Rails.application.routes.url_helpers.
+            bbs_thread_url(bbs_thread, host: request.host, protocol: request.scheme),
+        }
+      }
     )
   end
   

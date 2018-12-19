@@ -53,7 +53,14 @@ RSpec.describe Api::BbsThreadsController, type: :controller do
         @bbs_threads.
         limit(10).
         map{|bbs_thread|
-          bbs_thread.slice('id', 'title', 'created_at')
+          {
+            id: bbs_thread.id,
+            title: bbs_thread.title,
+            created_at: bbs_thread.created_at,
+            url:
+              Rails.application.routes.url_helpers.
+              bbs_thread_url(bbs_thread, host: request.host, protocol: request.scheme)
+          }
         }.
         to_json
       )
